@@ -326,7 +326,8 @@ func _update_project_settings() -> void:
 		)
 		
 	if Engine.is_editor_hint():
-		ProjectSettings.save()
+		if ProjectSettings.save() != OK:
+			printerr("PerformanceMonitor: could not save project settings!")
 
 func _on_Timer_timeout() -> void:
 	if is_visible_in_tree():
